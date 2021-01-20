@@ -8,13 +8,20 @@ commands: # a reusable command with parameters
       steps:
          - run: echo "Hello <<parameters.to>>"
 jobs:
-   my-job:
+   my-first-job:
       docker:
          - image: circleci/openjdk:8u171-jdk
       steps:
          - greeting:
             to: "Rishi Khurana"
+   my-second-job:
+      docker:
+         - image: circleci/openjdk:8u171-jdk
+      steps:
+         - greeting:
+            to: "Elon"
 workflows:
    my-workflow:
       jobs:
-         - my-job         
+         - my-first-job
+         - my-second-job         
